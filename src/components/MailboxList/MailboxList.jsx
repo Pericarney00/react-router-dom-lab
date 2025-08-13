@@ -6,16 +6,16 @@ const MailboxList = (props) => {
   return (
     <>
 
-      <h2> Mail List</h2>
+      <h1> Mailbox List</h1>
       <ul>
         {props.mailboxes.map((mailbox) => {
           return (
-            <li key={mailbox._id}>
-              <Link to={`/mailboxes/${mailbox._id}`} >
-                {mailbox.boxOwner}
+            <li className="mail-box" key={mailbox._id}>
+              <Link to={`/mailboxes/${mailbox._id}`}>
+                Mailbox {mailbox._id}
               </Link>
             </li>
-          )
+          );
         })}
       </ul>
     </>

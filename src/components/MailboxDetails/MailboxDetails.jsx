@@ -13,12 +13,16 @@ const MailboxDetails = (props) => {
   );
   return (
     <>
+      <section>
+        <h1>Mailbox{selectedBox._id}</h1>
       <div >
-        <h2>Mailbox{selectedBox._id}</h2>
-        <h3>Details</h3>
+          <h3>Details</h3>
+          <p>Box Id:{ selectedBox._id}</p>
         <p>Boxholder:{selectedBox.boxOwner}</p>
         <p>Box Size: {selectedBox.boxSize }</p>
     </div>
+
+      </section>
     </>
   )
 }
