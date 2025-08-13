@@ -1,10 +1,54 @@
+import {useState} from "react"
+import { useNavigate } from "react-router"
+
+const initialState = {
+  boxSize: "",
+  boxOwner: "",
+};
 
 
-const MailboxForm = () => {
-  
+const MailboxForm = (props) => {
+  const [formData, setFormData] = useState(initialState)
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.addBox(formData)
+    setFormData(initialState)
+    navigate("/mailboxes")
+  }
+
+  const handleChange = ({target}) => {
+    setFormData({...formData, [target.name]: target.value})
+  }
+
+
   return (
-    console.log("Mailbox Form page")
-  )
+    <main>
+      <h2>New Mailbox</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="boxOwner">Enter a Boxholder:</label>
+        <input
+          type="text"
+          id="boxOwner"
+          name="boxOwner"
+          value={formData.boxOwner}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="boxSize">Select a Box Size:</label>
+        <input
+          type="text"
+          id="boxSize"
+          name="boxSize"
+          value={formData.boxSize}
+          onChange={handleChange}
+        />
+          <button type="submit">Submit</button>
+      </form>
+    </main>
+  );
 }
 
 
