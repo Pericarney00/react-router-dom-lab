@@ -6,11 +6,16 @@ const MailboxDetails = (props) => {
   console.log(props)
   const { mailboxId } = useParams();
   const selectedBox = props.mailboxes.find((mailbox) => {
-      return (
-        mailbox._id === Number(mailboxId)
-      )
-    }
-  );
+    return (
+      mailbox._id === Number(mailboxId)
+    )
+  }
+);
+if (!selectedBox) {
+  return (
+    <h2>Mailbox not found</h2>
+  )
+}
   return (
     <>
       <section>

@@ -2,7 +2,7 @@ import {useState} from "react"
 import { useNavigate } from "react-router"
 
 const initialState = {
-  boxSize: "",
+  boxSize: "small",
   boxOwner: "",
 };
 
@@ -33,19 +33,25 @@ const MailboxForm = (props) => {
           type="text"
           id="boxOwner"
           name="boxOwner"
+          required
           value={formData.boxOwner}
           onChange={handleChange}
         />
 
         <label htmlFor="boxSize">Select a Box Size:</label>
-        <input
-          type="text"
-          id="boxSize"
+        <select
           name="boxSize"
-          value={formData.boxSize}
+          id="boxSize"
           onChange={handleChange}
-        />
-          <button type="submit">Submit</button>
+          defaultValue={"Select a Size" || formData.boxSize}
+        >
+          <option value="">Select a Size</option>
+          <option value="small">small</option>
+          <option value="medium">medium</option>
+          <option value="large">large</option>
+        </select>
+
+        <button type="submit">Submit</button>
       </form>
     </main>
   );
